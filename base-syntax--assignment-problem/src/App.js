@@ -5,20 +5,20 @@ import UserOutput from './UserOutput/UserOutput';
 
 class App extends Component {
   state = {
-    user: [
-      {username: 'Malone'},
-      {username: 'Tony2tones'},
-      {username: 'hopscotch'}
-    ]
+    username: 'Malone'}
+
+  usernameHandler = (event) => {
+    this.setState({ username: event.target.value },
+    )
   }
 
   render() {
     return (
       <div className="App">
         <ol>
-          <li>Create TWO new components: UserInput and UserOutput</li>
-          <li>UserInput should hold an input element, UserOutput two paragraphs</li>
-          <li>Output multiple UserOutput components in the App component (any paragraph texts of your choice)</li>
+          <li>Create TWO new components: UserInput and UserOutput: done</li>
+          <li>UserInput should hold an input element, UserOutput two paragraphs: done</li>
+          <li>Output multiple UserOutput components in the App component (any paragraph texts of your choice): done</li>
           <li>Pass a username (of your choice) to UserOutput via props and display it there</li>
           <li>Add state to the App component (=> the username) and pass the username to the UserOutput component</li>
           <li>Add a method to manipulate the state (=> an event-handler method)</li>
@@ -29,10 +29,13 @@ class App extends Component {
         </ol>
         <hr />
 
-        <UserInput />
+        <UserInput 
+        changed={this.usernameHandler}
+        value={this.state.username}
+        />
+        <UserOutput name={this.state.username} />
+        <UserOutput name={this.state.username} />
         <UserOutput name="tony"> </UserOutput>
-        <UserOutput name={this.state.user[1].username}/>
-        <UserOutput name={this.state.user[2].username}/>
       </div>
     );
   }
