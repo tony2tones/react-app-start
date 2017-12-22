@@ -1,0 +1,12 @@
+.UserInput {
+    width: auto;
+    margin: 20px;
+    text-align: center;
+    border: 2px solid rgb(202, 199, 199);
+    box-shadow: 0 2px 0;
+    background-color: aliceblue
+}
+
+input {
+    margin-bottom: 15px;
+}
