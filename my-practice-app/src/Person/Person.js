@@ -2,7 +2,8 @@ import React from 'react';
 
 const person = (props) => {
     return <div className="Person">
-        <p> My name is {props.name} and i'm {props.age} years old </p>
+        <p onClick={props.clickThisBaby}> My name is {props.name} and i'm {props.age} years old </p>
+        <input type="text" onChange={props.switchThisName}/>
     </div>
 
 };
