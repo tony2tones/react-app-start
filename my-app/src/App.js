@@ -8,14 +8,18 @@ class App extends Component {
       {name: 'Tony', age: 32},
       {name: 'Steve', age: 29},
       {name: 'Sally', age: 28}
-    ]
+    ],
+    toggleList : false
   }
 
   switchNameHandler = () => {
-    console.log('was clicked');
+    const doesItShow = this.state.toggleList;
+    console.log(this.state.toggleList);
+    this.setState({toggleList : !doesItShow});
+
   }
-  changeHandler = (event)=> {
-    state = {
+  changeNameHandler = (event)=> {
+    this.setState = {
       persons: [
         {name: 'Tony', age: 32},
         {name: event.target.value, age: 29},
@@ -25,20 +29,26 @@ class App extends Component {
   }
 
   render() {
+    const person = null;
+
+    if(this.state.toggleList){
+    this.state.persons.map(person => {
+      return <Person 
+              name={person.name}
+              age={person.age}
+              />
+    });
+   
+    }
+
     return (
       <div className="App">
         <h2> This is React </h2>
         <p> this is really working </p>
         <button onClick={this.switchNameHandler}> Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-        <Person 
-        changed={this.changeHandler} 
-        name={this.state.persons[1].name} 
-        age={this.state.persons[1].age}>My hobby is racing</Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+        {person}
       </div>
     );
-    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'This is React!!!! and this works ya'));
   }
 }
 
