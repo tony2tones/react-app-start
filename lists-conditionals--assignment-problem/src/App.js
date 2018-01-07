@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
+import validation from './Validation/Validation';
+import char from './Char/Char';
 
 class App extends Component {
+ state = {
+   userInput : ''
+ }
+
+ userInputHandler = (event) => {
+  this.setState({userInput:event.target.value })
+ }
+
   render() {
     return (
       <div className="App">
@@ -14,6 +24,11 @@ class App extends Component {
           <li>When you click a CharComponent, it should be removed from the entered text.</li>
         </ol>
         <p>Hint: Keep in mind that JavaScript strings are basically arrays!</p>
+        <hr/>
+        <input type="text" onChange={this.userInputHandler}/>
+        <p>{this.state.userInput}</p>
+        {/* creating inputlength so it can be passed as a prop to validaiton */}
+        <Validation inputLength={this.state.userInput.length} />
       </div>
     );
   }
