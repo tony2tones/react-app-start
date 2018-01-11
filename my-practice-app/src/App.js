@@ -47,11 +47,7 @@ class App extends Component {
 
     let persons = null;
 
-    const classes = [];
-
-    if(this.state.persons.length <= 2){
-      classes.push('red');
-    }
+   
 
     if (this.state.showPersons) {
       persons = (
@@ -68,6 +64,16 @@ class App extends Component {
       );
 
       style.backgroundColor = 'red';
+    }
+
+    const classes = [];
+
+    if(this.state.persons.length <= 2){
+      classes.push('red');
+    }
+
+    if(this.state.persons.length <= 1){
+      classes.push('bold');
     }
 
     return (
