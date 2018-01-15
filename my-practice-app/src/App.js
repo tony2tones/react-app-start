@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import Radium from 'radium';
 
 class App extends Component {
   state = {
@@ -15,7 +16,7 @@ class App extends Component {
   deletePersonHandler = (personIndex) => {
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1)
-    this.setState({persons:persons})
+    this.setState({ persons: persons })
 
   }
 
@@ -42,7 +43,11 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     }
 
     let persons = null;
@@ -50,7 +55,7 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map((person,index) => {
+          {this.state.persons.map((person, index) => {
             return <Person
               clickThisBaby={() => this.deletePersonHandler(index)}
               name={person.name}
@@ -62,18 +67,21 @@ class App extends Component {
       );
 
       style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      };
     }
 
     return (
       <div className="App">
         <h1>This is a React App</h1>
-        <button 
-        style={style}
-        onClick={this.togglePersons}>Switch Name</button>
+        <button
+          style={style}
+          onClick={this.togglePersons}>Switch Name</button>
         {persons}
       </div>
     );
   }
 }
-
-export default App;
+export default Radium(App);
