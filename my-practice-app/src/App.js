@@ -86,17 +86,6 @@ class App extends Component {
     }
 
     return (
-<<<<<<< .mine
-      <div className="App">
-        <h1>This is a React App</h1>
-        <p className={classes.join(' ')}> This is just about working </p>
-        <button 
-        style={style}
-        onClick={this.togglePersons}
-        >Switch Name</button>
-        {persons}
-      </div>
-=======
       <StyleRoot>
         <div className="App">
           <h1>This is a React App</h1>
@@ -106,7 +95,6 @@ class App extends Component {
           {persons}
         </div>
       </StyleRoot>
->>>>>>> .theirs
     );
   }
 }
