@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import Radium, { StyleRoot } from 'radium';
 
 class App extends Component {
   state = {
@@ -15,7 +16,7 @@ class App extends Component {
   deletePersonHandler = (personIndex) => {
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1)
-    this.setState({persons:persons})
+    this.setState({ persons: persons })
 
   }
 
@@ -42,7 +43,11 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     }
 
     let persons = null;
@@ -52,7 +57,7 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map((person,index) => {
+          {this.state.persons.map((person, index) => {
             return <Person
               clickThisBaby={() => this.deletePersonHandler(index)}
               name={person.name}
@@ -64,6 +69,10 @@ class App extends Component {
       );
 
       style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      };
     }
 
     const classes = [];
@@ -77,6 +86,7 @@ class App extends Component {
     }
 
     return (
+<<<<<<< .mine
       <div className="App">
         <h1>This is a React App</h1>
         <p className={classes.join(' ')}> This is just about working </p>
@@ -86,8 +96,18 @@ class App extends Component {
         >Switch Name</button>
         {persons}
       </div>
+=======
+      <StyleRoot>
+        <div className="App">
+          <h1>This is a React App</h1>
+          <button
+            style={style}
+            onClick={this.togglePersons}>Switch Name</button>
+          {persons}
+        </div>
+      </StyleRoot>
+>>>>>>> .theirs
     );
   }
 }
-
-export default App;
+export default Radium(App);
