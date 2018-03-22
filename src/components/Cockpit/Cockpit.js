@@ -4,9 +4,9 @@ import classes from './Cockpit.css';
 
 const cockpit = ( props ) => {
     const assignedClasses = [];
-    let btnClass = classes.Button;
+    let btnClass = '';
     if (props.showPersons) {
-        btnClass = [classes.Red, classes.Red].join(' ');
+        btnClass = classes.Red;
     }
 
     if ( props.persons.length <= 2 ) {
@@ -17,7 +17,7 @@ const cockpit = ( props ) => {
     }
 
     return (
-        <div>
+        <div className={classes.Cockpit}>
             <h1>{ props.appTitle }</h1>
             <p className={assignedClasses.join( ' ' )}>This is really working!</p>
             <button
